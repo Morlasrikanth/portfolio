@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srikanth Morla — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1816;
+    --ink-soft: #5c5855;
+    --ink-faint: #a8a49f;
+    --paper: #f7f4ef;
+    --paper-warm: #ede9e2;
+    --accent: #c8503a;
+    --accent-light: #f0d5cf;
+    --line: rgba(26,24,22,0.12);
+    --ff-display: 'Cormorant Garamond', Georgia, serif;
+    --ff-body: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--ff-body);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(8px);
+  }
+  .nav-logo {
+    font-family: var(--ff-display);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 3rem 6rem 4rem;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 32px; height: 1px;
+    background: var(--accent);
+  }
+  .hero-name {
+    font-family: var(--ff-display);
+    font-size: clamp(3.5rem, 7vw, 6rem);
+    font-weight: 300;
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-role {
+    font-family: var(--ff-body);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+    margin-top: 0.6rem;
+  }
+  .hero-subtitle {
+    font-family: var(--ff-display);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 2rem;
+  }
+  .hero-bio {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    max-width: 420px;
+    margin-bottom: 3rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; align-items: center; }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 0.8rem 2rem;
+    font-family: var(--ff-body);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-ghost {
+    color: var(--ink);
+    padding: 0.8rem 2rem;
+    font-family: var(--ff-body);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--line);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── FIGMA DESIGNS ── */
+  #figma { background: var(--paper-warm); }
+  .figma-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  .figma-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .figma-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .figma-embed-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 62%;
+    background: var(--paper-warm);
+    overflow: hidden;
+  }
+  .figma-embed-wrap iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .figma-card-body { padding: 1.5rem; }
+  .figma-card-title {
+    font-family: var(--ff-display);
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+  .figma-card-desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+  .figma-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .figma-tag {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 3px 10px;
+  }
+
+  /* ── GET IN TOUCH DROPDOWN ── */
+  .cta-dropdown-wrap { position: relative; display: inline-block; }
+  .cta-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    min-width: 220px;
+    z-index: 200;
+    box-shadow: 0 8px 24px rgba(26,24,22,0.1);
+  }
+  .cta-dropdown-wrap:hover .cta-dropdown,
+  .cta-dropdown-wrap:focus-within .cta-dropdown { display: block; }
+  .cta-dropdown a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.85rem 1.25rem;
+    font-size: 13px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.15s, color 0.15s;
+  }
+  .cta-dropdown a:last-child { border-bottom: none; }
+  .cta-dropdown a:hover { background: var(--accent-light); color: var(--accent); }
+  .cta-dropdown-icon { font-size: 16px; }
+
+  .hero-right {
+    background: var(--paper-warm);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 3rem;
+    position: relative;
+    border-left: 1px solid var(--line);
+  }
+  .hero-stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    width: 100%;
+    max-width: 360px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-bottom: 3rem;
+  }
+  .hero-stat {
+    background: var(--paper-warm);
+    padding: 2rem 1.5rem;
+  }
+  .hero-stat-number {
+    font-family: var(--ff-display);
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .hero-stat-label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .hero-tools {
+    width: 100%;
+    max-width: 360px;
+  }
+  .hero-tools-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+  }
+  .tool-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tool-pill {
+    font-size: 12px;
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    background: var(--paper);
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: var(--ff-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+  .section-intro {
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin-bottom: 3.5rem;
+    line-height: 1.8;
+  }
+  .divider {
+    height: 1px;
+    background: var(--line);
+    margin: 0 4rem;
+  }
+
+  /* ── WORK ── */
+  #work { background: var(--paper); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .project-card {
+    background: var(--paper);
+    padding: 2.5rem;
+    transition: background 0.25s;
+    position: relative;
+  }
+  .project-card:hover { background: var(--paper-warm); }
+  .project-number {
+    font-family: var(--ff-display);
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+  .project-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 3px 10px;
+    margin-bottom: 1rem;
+  }
+  .project-title {
+    font-family: var(--ff-display);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .project-desc {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2rem;
+  }
+  .meta-tag {
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+  }
+  .project-link {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .project-link:hover { color: var(--accent); gap: 10px; }
+  .project-link::after { content: '→'; }
+
+  /* ── PROCESS ── */
+  #process { background: var(--paper-warm); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-bottom: 3rem;
+  }
+  .process-step {
+    background: var(--paper-warm);
+    padding: 2.5rem 2rem;
+  }
+  .process-step-num {
+    font-family: var(--ff-display);
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--accent-light);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .process-step-title {
+    font-family: var(--ff-display);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+  }
+  .process-step-desc {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.7;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--paper); }
+  .skills-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+  .skill-category-title {
+    font-family: var(--ff-display);
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .skill-list { list-style: none; }
+  .skill-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .skill-item:last-child { border-bottom: none; }
+  .skill-bar-wrap {
+    width: 100px;
+    height: 2px;
+    background: var(--line);
+    position: relative;
+  }
+  .skill-bar {
+    height: 100%;
+    background: var(--accent);
+    transition: width 1.2s ease;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  #certs { background: var(--paper-warm); }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+  .cert-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 1.75rem;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: var(--accent); }
+  .cert-icon {
+    width: 36px; height: 36px;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 18px;
+  }
+  .cert-name {
+    font-family: var(--ff-display);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+  .cert-issuer {
+    font-size: 12px;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--ink); color: var(--paper); }
+  #about .section-label { color: var(--accent); }
+  #about .section-title { color: var(--paper); }
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .about-text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(247,244,239,0.75);
+  }
+  .about-text p { margin-bottom: 1.25rem; }
+  .about-quote {
+    font-family: var(--ff-display);
+    font-size: 1.6rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--paper);
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.5rem;
+  }
+  .about-detail-list { list-style: none; }
+  .about-detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(247,244,239,0.1);
+    font-size: 14px;
+  }
+  .about-detail-item:last-child { border-bottom: none; }
+  .about-detail-key {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(247,244,239,0.4);
+  }
+  .about-detail-val { color: rgba(247,244,239,0.85); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--paper); }
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+  .contact-link-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link-item:hover { border-color: var(--accent); background: var(--accent-light); }
+  .contact-link-icon {
+    width: 40px; height: 40px;
+    background: var(--paper-warm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .contact-link-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2px;
+  }
+  .contact-link-value {
+    font-size: 14px;
+    color: var(--ink);
+  }
+  .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .form-input, .form-textarea {
+    background: var(--paper-warm);
+    border: 1px solid var(--line);
+    padding: 0.85rem 1rem;
+    font-family: var(--ff-body);
+    font-size: 14px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+  .form-textarea { height: 120px; }
+  .form-submit {
+    background: var(--accent);
+    color: var(--paper);
+    border: none;
+    padding: 0.9rem 2rem;
+    font-family: var(--ff-body);
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    align-self: flex-start;
+  }
+  .form-submit:hover { background: var(--ink); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    color: rgba(247,244,239,0.4);
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+  footer a { color: rgba(247,244,239,0.4); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+
+  /* ── FADE-IN ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in-delay-1 { transition-delay: 0.1s; }
+  .fade-in-delay-2 { transition-delay: 0.2s; }
+  .fade-in-delay-3 { transition-delay: 0.3s; }
+  .fade-in-delay-4 { transition-delay: 0.4s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 4rem 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .divider { margin: 0 1.5rem; }
+    .about-layout, .contact-layout, .skills-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 0.75rem; text-align: center; padding: 1.5rem; }
+  }
+  @media (max-width: 600px) {
+    .process-steps { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Srikanth Morla</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#figma">Figma</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <h1 class="hero-name fade-in fade-in-delay-1">Srikanth<br><em>Morla</em></h1>
+    <p class="hero-role fade-in fade-in-delay-2">Product Designer</p>
+    <p class="hero-subtitle fade-in fade-in-delay-2">Designing with intention.</p>
+    <p class="hero-bio fade-in fade-in-delay-3">
+      Entry-level Product Designer passionate about crafting user-centred digital experiences — from discovery and research through wireframes, prototypes, and polished final screens.
+    </p>
+    <div class="hero-ctas fade-in fade-in-delay-4">
+      <a href="#work" class="btn-primary">View My Work</a>
+      <div class="cta-dropdown-wrap">
+        <button class="btn-ghost" style="cursor:pointer; background:transparent;">Get In Touch ▾</button>
+        <div class="cta-dropdown">
+          <a href="https://www.linkedin.com/in/morla-srikanth/" target="_blank">
+            <span class="cta-dropdown-icon">💼</span> LinkedIn
+          </a>
+          <a href="mailto:morlasrikanth2002@gmail.com">
+            <span class="cta-dropdown-icon">✉️</span> morlasrikanth2002@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat-grid fade-in">
+      <div class="hero-stat">
+        <div class="hero-stat-number">3</div>
+        <div class="hero-stat-label">Live projects</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">5+</div>
+        <div class="hero-stat-label">Certifications</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">2</div>
+        <div class="hero-stat-label">Design tools</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">1</div>
+        <div class="hero-stat-label">Year experience</div>
+      </div>
+    </div>
+    <div class="hero-tools fade-in fade-in-delay-2">
+      <p class="hero-tools-label">Primary tools</p>
+      <div class="tool-pills">
+        <span class="tool-pill">Figma</span>
+        <span class="tool-pill">Adobe XD</span>
+        <span class="tool-pill">HTML &amp; CSS</span>
+        <span class="tool-pill">React.js</span>
+        <span class="tool-pill">Canva</span>
+        <span class="tool-pill">VSCode</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- WORK -->
+<section id="work">
+  <p class="section-label fade-in">Selected work</p>
+  <h2 class="section-title fade-in fade-in-delay-1">Projects that<br><em style="font-family: var(--ff-display); font-style: italic;">ship.</em></h2>
+  <p class="section-intro fade-in fade-in-delay-2">Real-world projects built from design to deployment — combining UX thinking with frontend craft.</p>
+
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <p class="project-number">01</p>
+      <span class="project-tag">UI / UX · Web</span>
+      <h3 class="project-title">GK Legal Firm</h3>
+      <p class="project-desc">
+        A professional responsive website for a legal practice. Focused on establishing trust through clean visual hierarchy, structured navigation, and clear calls-to-action — making legal services feel approachable.
+      </p>
+      <div class="project-meta">
+        <span class="meta-tag">User Research</span>
+        <span class="meta-tag">Wireframing</span>
+        <span class="meta-tag">Responsive Design</span>
+        <span class="meta-tag">HTML · CSS · JS</span>
+      </div>
+      <a href="https://www.gklegalfirm.com/" target="_blank" class="project-link">View live site</a>
+    </div>
+
+    <div class="project-card fade-in fade-in-delay-1">
+      <p class="project-number">02</p>
+      <span class="project-tag">UI / UX · NGO</span>
+      <h3 class="project-title">Kodaicharity</h3>
+      <p class="project-desc">
+        A charity website designed with accessibility and mobile-first principles at the forefront. Clean layout surfaces the organisation's mission and drives donations through intentional content structure.
+      </p>
+      <div class="project-meta">
+        <span class="meta-tag">Accessibility</span>
+        <span class="meta-tag">Mobile-First</span>
+        <span class="meta-tag">Information Architecture</span>
+        <span class="meta-tag">HTML · CSS · JS</span>
+      </div>
+      <a href="https://kodaicharity.in/" target="_blank" class="project-link">View live site</a>
+    </div>
+
+    <div class="project-card fade-in fade-in-delay-2">
+      <p class="project-number">03</p>
+      <span class="project-tag">UI · Internal Tool</span>
+      <h3 class="project-title">Ugyan Edutech HR LMS</h3>
+      <p class="project-desc">
+        Contributed UI design and frontend implementation to an internal HR Learning Management System. Improved usability and screen flows for internal users — applying design thinking to a complex enterprise tool.
+      </p>
+      <div class="project-meta">
+        <span class="meta-tag">Usability</span>
+        <span class="meta-tag">UI Screens</span>
+        <span class="meta-tag">React.js</span>
+        <span class="meta-tag">REST API</span>
+      </div>
+      <span style="font-size:12px; color: var(--ink-faint); letter-spacing: 0.05em; text-transform: uppercase;">Internal project</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FIGMA DESIGNS -->
+<section id="figma">
+  <p class="section-label fade-in">Figma work</p>
+  <h2 class="section-title fade-in fade-in-delay-1">Design<br><em style="font-family: var(--ff-display); font-style: italic;">explorations.</em></h2>
+  <p class="section-intro fade-in fade-in-delay-2">UI designs and prototypes crafted in Figma — showcasing visual thinking, components, and interaction design.</p>
+
+  <div class="figma-grid">
+
+    <div class="figma-card fade-in">
+      <div class="figma-embed-wrap">
+        <iframe
+          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2Ftr2Z3C2Y9p7nhzclkdZREL%2FPractice%3Fnode-id%3D146-19%26t%3D4jQwANvGjyzK5xdz-1"
+          allowfullscreen
+          loading="lazy"
+          title="Practice — Figma Design"></iframe>
+      </div>
+      <div class="figma-card-body">
+        <h3 class="figma-card-title">Practice Design</h3>
+        <p class="figma-card-desc">UI exploration and design practice — layouts, components, and visual design concepts built in Figma.</p>
+        <div class="figma-card-footer">
+          <span class="figma-tag">Figma · UI Design</span>
+          <a href="https://www.figma.com/design/tr2Z3C2Y9p7nhzclkdZREL/Practice?node-id=146-19&t=4jQwANvGjyzK5xdz-1" target="_blank" class="project-link">Open in Figma</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more Figma designs here — copy the .figma-card block above -->
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROCESS -->
+<section id="process">
+  <p class="section-label fade-in">How I work</p>
+  <h2 class="section-title fade-in fade-in-delay-1">My design<br><em style="font-family: var(--ff-display); font-style: italic;">process.</em></h2>
+  <p class="section-intro fade-in fade-in-delay-2">A structured approach that keeps users at the centre from first research question to final pixel.</p>
+
+  <div class="process-steps">
+    <div class="process-step fade-in">
+      <div class="process-step-num">01</div>
+      <h3 class="process-step-title">Discover</h3>
+      <p class="process-step-desc">User research, competitive analysis, stakeholder interviews. I ask questions before drawing anything.</p>
+    </div>
+    <div class="process-step fade-in fade-in-delay-1">
+      <div class="process-step-num">02</div>
+      <h3 class="process-step-title">Define</h3>
+      <p class="process-step-desc">Synthesise findings into user personas, journey maps, and a clear problem statement.</p>
+    </div>
+    <div class="process-step fade-in fade-in-delay-2">
+      <div class="process-step-num">03</div>
+      <h3 class="process-step-title">Design</h3>
+      <p class="process-step-desc">Low-fi wireframes → high-fidelity prototypes in Figma. Iterate rapidly based on feedback.</p>
+    </div>
+    <div class="process-step fade-in fade-in-delay-3">
+      <div class="process-step-num">04</div>
+      <h3 class="process-step-title">Deliver</h3>
+      <p class="process-step-desc">Handoff-ready designs with documentation, or directly building in HTML/CSS/React.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label fade-in">Capabilities</p>
+  <h2 class="section-title fade-in fade-in-delay-1">Skills &amp;<br><em style="font-family: var(--ff-display); font-style: italic;">tools.</em></h2>
+
+  <div class="skills-layout">
+    <div>
+      <h3 class="skill-category-title">Design skills</h3>
+      <ul class="skill-list">
+        <li class="skill-item"><span>UX Research &amp; User Flows</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="85" style="width:0"></div></div></li>
+        <li class="skill-item"><span>Wireframing</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="90" style="width:0"></div></div></li>
+        <li class="skill-item"><span>High-fidelity Prototyping</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="80" style="width:0"></div></div></li>
+        <li class="skill-item"><span>Information Architecture</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="78" style="width:0"></div></div></li>
+        <li class="skill-item"><span>Responsive &amp; Mobile-First</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="88" style="width:0"></div></div></li>
+        <li class="skill-item"><span>Design Thinking</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="83" style="width:0"></div></div></li>
+        <li class="skill-item"><span>Accessibility (a11y)</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="75" style="width:0"></div></div></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="skill-category-title">Tools &amp; tech</h3>
+      <ul class="skill-list">
+        <li class="skill-item"><span>Figma</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="88" style="width:0"></div></div></li>
+        <li class="skill-item"><span>Adobe XD</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="80" style="width:0"></div></div></li>
+        <li class="skill-item"><span>HTML5 &amp; CSS3</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="85" style="width:0"></div></div></li>
+        <li class="skill-item"><span>JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="70" style="width:0"></div></div></li>
+        <li class="skill-item"><span>React.js</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="65" style="width:0"></div></div></li>
+        <li class="skill-item"><span>Git &amp; Version Control</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="72" style="width:0"></div></div></li>
+        <li class="skill-item"><span>Canva</span><div class="skill-bar-wrap"><div class="skill-bar" data-width="82" style="width:0"></div></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <p class="section-label fade-in">Credentials</p>
+  <h2 class="section-title fade-in fade-in-delay-1">Certifications.</h2>
+  <p class="section-intro fade-in fade-in-delay-2">Continuously upskilling with industry-recognised certifications.</p>
+
+  <div class="cert-grid">
+    <div class="cert-card fade-in">
+      <div class="cert-icon">🎓</div>
+      <p class="cert-name">Google UX Design Professional Certificate</p>
+      <p class="cert-issuer">Coursera · In Progress</p>
+    </div>
+    <div class="cert-card fade-in fade-in-delay-1">
+      <div class="cert-icon">✏️</div>
+      <p class="cert-name">UX Design Essentials — Adobe XD &amp; Figma</p>
+      <p class="cert-issuer">Udemy</p>
+    </div>
+    <div class="cert-card fade-in fade-in-delay-2">
+      <div class="cert-icon">💻</div>
+      <p class="cert-name">Full Stack Web Development</p>
+      <p class="cert-issuer">Ugyan Edutech Pvt Ltd</p>
+    </div>
+    <div class="cert-card fade-in fade-in-delay-3">
+      <div class="cert-icon">🐍</div>
+      <p class="cert-name">Introduction to Python Programming</p>
+      <p class="cert-issuer">Microsoft Technology Associate (MTA)</p>
+    </div>
+    <div class="cert-card fade-in fade-in-delay-4">
+      <div class="cert-icon">🌐</div>
+      <p class="cert-name">Web Development Certification</p>
+      <p class="cert-issuer">Mach-IT</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label fade-in">About me</p>
+  <h2 class="section-title fade-in fade-in-delay-1">Designer who<br><em style="font-family: var(--ff-display); font-style: italic;">builds.</em></h2>
+
+  <div class="about-layout">
+    <div>
+      <p class="about-quote fade-in">"Good design is invisible — the user just feels like everything works."</p>
+      <div class="about-text fade-in fade-in-delay-1">
+        <p>I'm Srikanth, a product designer based in Andhra Pradesh, India. I came to design through an unconventional path — starting with Mechanical Engineering before discovering my passion for digital products and human-centred design.</p>
+        <p>My background in both design and frontend development means I understand the full product lifecycle: from the first user interview through wireframes and prototypes, all the way to working code. I know what's buildable and I care deeply about what's usable.</p>
+        <p>Currently pursuing the Google UX Design Professional Certificate and looking for opportunities where I can grow as a designer while contributing to products people actually love using.</p>
+      </div>
+    </div>
+    <div>
+      <ul class="about-detail-list fade-in fade-in-delay-2">
+        <li class="about-detail-item">
+          <span class="about-detail-key">Location</span>
+          <span class="about-detail-val">Guntur, Andhra Pradesh</span>
+        </li>
+        <li class="about-detail-item">
+          <span class="about-detail-key">Email</span>
+          <span class="about-detail-val">morlasrikanth2002@gmail.com</span>
+        </li>
+        <li class="about-detail-item">
+          <span class="about-detail-key">Phone</span>
+          <span class="about-detail-val">+91 9550495398</span>
+        </li>
+        <li class="about-detail-item">
+          <span class="about-detail-key">Education</span>
+          <span class="about-detail-val">B.Tech IT — Bapatla Engineering College</span>
+        </li>
+        <li class="about-detail-item">
+          <span class="about-detail-key">Experience</span>
+          <span class="about-detail-val">Ugyan Edutech (Intern, 2025)</span>
+        </li>
+        <li class="about-detail-item">
+          <span class="about-detail-key">GitHub</span>
+          <span class="about-detail-val"><a href="https://github.com/Morlasrikanth" target="_blank" style="color:rgba(247,244,239,0.6); text-decoration:none;">github.com/Morlasrikanth</a></span>
+        </li>
+        <li class="about-detail-item">
+          <span class="about-detail-key">LinkedIn</span>
+          <span class="about-detail-val"><a href="https://www.linkedin.com/in/morla-srikanth/" target="_blank" style="color:rgba(247,244,239,0.6); text-decoration:none;">morla-srikanth</a></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider" style="background: rgba(247,244,239,0.1); margin: 0 4rem;"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label fade-in">Let's talk</p>
+  <h2 class="section-title fade-in fade-in-delay-1">Open to<br><em style="font-family: var(--ff-display); font-style: italic;">opportunities.</em></h2>
+  <p class="section-intro fade-in fade-in-delay-2">Looking for a junior UX/Product Design role where I can contribute, learn, and grow. Drop me a message.</p>
+
+  <div class="contact-layout">
+    <div>
+      <div class="contact-links">
+        <a href="mailto:morlasrikanth2002@gmail.com" class="contact-link-item fade-in">
+          <div class="contact-link-icon">✉️</div>
+          <div>
+            <p class="contact-link-label">Email</p>
+            <p class="contact-link-value">morlasrikanth2002@gmail.com</p>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/morla-srikanth/" target="_blank" class="contact-link-item fade-in fade-in-delay-1">
+          <div class="contact-link-icon">💼</div>
+          <div>
+            <p class="contact-link-label">LinkedIn</p>
+            <p class="contact-link-value">linkedin.com/in/morla-srikanth</p>
+          </div>
+        </a>
+        <a href="https://github.com/Morlasrikanth" target="_blank" class="contact-link-item fade-in fade-in-delay-2">
+          <div class="contact-link-icon">🐙</div>
+          <div>
+            <p class="contact-link-label">GitHub</p>
+            <p class="contact-link-value">github.com/Morlasrikanth</p>
+          </div>
+        </a>
+        <a href="tel:+919550495398" class="contact-link-item fade-in fade-in-delay-3">
+          <div class="contact-link-icon">📞</div>
+          <div>
+            <p class="contact-link-label">Phone</p>
+            <p class="contact-link-value">+91 9550495398</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="contact-form fade-in fade-in-delay-1">
+      <div class="form-group">
+        <label class="form-label" for="name">Your name</label>
+        <input class="form-input" type="text" id="name" placeholder="e.g. Priya Sharma">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">Email address</label>
+        <input class="form-input" type="email" id="email" placeholder="you@company.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="msg">Message</label>
+        <textarea class="form-textarea" id="msg" placeholder="Tell me about the opportunity…"></textarea>
+      </div>
+      <button class="form-submit" onclick="handleSubmit()">Send message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Srikanth Morla — Product Designer</span>
+  <span>Designed &amp; built with care · Guntur, India</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const skillBars = document.querySelectorAll('.skill-bar[data-width]');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.width = e.target.dataset.width + '%';
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  skillBars.forEach(b => barObserver.observe(b));
+
+  function handleSubmit() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const msg = document.getElementById('msg').value.trim();
+    if (!name || !email || !msg) { alert('Please fill in all fields.'); return; }
+    window.location.href = `mailto:morlasrikanth2002@gmail.com?subject=Portfolio inquiry from ${encodeURIComponent(name)}&body=${encodeURIComponent(msg)}%0A%0AFrom: ${encodeURIComponent(email)}`;
+  }
+</script>
+</body>
+</html>
